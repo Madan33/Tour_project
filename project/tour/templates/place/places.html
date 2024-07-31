@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place List</title>
+  
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        .department-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #d3d3d3; 
+            border-radius: 5px; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .department-img {
+            max-width: 200px;
+            max-height: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Places</h1>
+        <ul class="list-unstyled">
+            <a href="/create_place/" class="btn btn-primary mb-3">Create Place</a>
+           
+            {% for Places in place %}
+            <li class="department-box">
+                <h2><b>Name:</b> {{ Places.name }}</h2>
+                <p><b>Location:</b> {{ Places.location }}</p>
+                <p><b>Description:</b> {{ Places.description }}</p>
+                <p><b>Places To Explore:</b> {{ Places.places_to_explore }}</p>
+                <img src="{{ Places.img.url }}" alt="{{ Places.name }}" class="Places-img img-fluid">
+
+            </li>
+            <li><a href="/trip/create/" class="btn btn-primary mb-3">Add Place To Trip </a></li>
+
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

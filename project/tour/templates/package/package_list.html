@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Package List</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Package List</h1>
+        <ul class="list-group">
+            {% for package in packages %}
+                <li class="list-group-item"><a href="{% url 'package-detail' package.pk %}">{{ package.category }}</a></li>
+            {% empty %}
+                <li class="list-group-item">No packages found.</li>
+            {% endfor %}
+        </ul>
+        <a class="btn btn-primary mt-3" href="{% url 'package-create' %}">Create New Package</a>
+       
+    
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

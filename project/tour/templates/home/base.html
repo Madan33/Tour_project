@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel journey{% block title %}{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/website-logo.png' %}">
+</head>
+
+<body>
+
+    <div class="intro">
+        <nav class="navbar">
+
+            <div class="navbar-title">Travel journey</div>
+
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+
+            <div class="navbar-link">
+                <ul class="navbar-nav" id="navbarNav">
+                        <li class="nav-item"><a href="{% url 'index' %}">HOME</a></li>
+                        <li class="nav-item"><a href="/places">PLACES</a></li>
+                        <li class="nav-item"><a href="/trip/">TRIPS</a></li>
+                        <li class="nav-item"><a href="/packages/">PACKAGES</a></li>
+                        <li class="nav-item"><a href="/booking_details/">BOOKING</a></li>
+                        <li class="nav-item"><a href="/about/">ABOUT</a></li>
+                        <li class="nav-item"><a href="/enquiry/">CONTACT</a></li>
+                        <li class="nav-item"><a href="/login/">LOGIN</a></li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img class="img1" src="{% static 'images/m2.jpg' %}" style="width: 100%;height: 100%">
+            <div class="text"><b> </b></div>
+        </div>
+    </div>
+
+    <div class="block-container">
+        {% block start %}
+        {% endblock start %}
+    </div>
+
+    <script src="{% static 'js/navbar.js' %}"></script>
+   

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel Data</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #f4ede6; 
+            border: 2px solid #000; 
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #000; 
+            border-right: 1px solid #000;
+        }
+        th {
+            background-color: #d3b8ae;
+            border-right: none;
+        }
+    </style>
+</head>
+<body>
+    <h1> Django Admin Panel Data in contact List</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+        </tr>
+        {% for Contact in com %}
+            <tr>
+                <td>{{ Contact.name }}</td>
+                <td>{{ Contact.email }}</td>
+                <td>{{ Contact.message }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

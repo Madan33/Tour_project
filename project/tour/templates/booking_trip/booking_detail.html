@@ -1,0 +1,30 @@
+{% block title %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Booking Details</h1>
+
+    {% for b in booking %}
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-primary text-white">
+            <h5 class="card-title">Booking ID: {{ b.id }}</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Trip:</strong> {{ b.trip }}</p>
+                    <p><strong>Booking Date:</strong> {{ b.booking_date }}</p>
+                    <p><strong>Name:</strong> {{ b.name }}</p>
+                    <p><strong>Email:</strong> {{ b.email }}</p>
+                    <p><strong>Contact:</strong> {{ b.contact }}</p>
+                    <p><strong>Price:</strong> {{ b.price }}</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="{% url 'trip_detail' b.trip.pk %}" class="btn btn-secondary">View Trip Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

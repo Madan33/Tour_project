@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        .form-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title mb-4">Enquiry Form</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="id_Name" class="form-label">Name</label>
+                            {{ form.Name }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="id_Gender" class="form-label">Gender</label>
+                            {{ form.Gender }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="id_dob" class="form-label">Date of Birth</label>
+                            {{ form.dob }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="id_age" class="form-label">Age</label>
+                            {{ form.age }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="id_phone" class="form-label">Phone</label>
+                            {{ form.phone }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="id_Email" class="form-label">Email</label>
+                            {{ form.Email }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="id_Category" class="form-label">Category</label>
+                            {{ form.Category }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="id_No_of_Days" class="form-label">Number of Days</label>
+                            {{ form.No_of_Days }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="id_No_of_Childrens" class="form-label">Number of Children</label>
+                            {{ form.No_of_Childrens }}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="id_No_of_Adults" class="form-label">Number of Adults</label>
+                            {{ form.No_of_Adults }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_Enquiry_message" class="form-label">Enquiry Message</label>
+                        {{ form.Enquiry_message }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-..."></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

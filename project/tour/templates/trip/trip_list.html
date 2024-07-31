@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place List and Trip List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            padding: 20px; 
+        }
+        .department-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff; 
+            border-radius: 5px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .department-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="mt-4 mb-4">Trip List</h1>
+        <ul class="list-unstyled">
+            {% for trip in trips %}
+            <li class="department-box">
+                <h2><b>Name:</b> {{ trip.place }}</h2>
+                <p><b>Location:</b> {{ trip.location }}</p>
+                <p><b>Price:</b> ${{ trip.price }}</p>
+                <p><b>Start Date:</b> {{ trip.start_date }}</p>
+                <p><b>End Date:</b> {{ trip.end_date }}</p>
+                <p><b>Places to Explore:</b> {{ trip.places_to_explore }}</p>
+                <img src="{{ trip.image.url }}" alt="{{ trip.place }}" class="department-img img-fluid mt-3 mb-3">
+                <div>
+                    <a href="{% url 'trip_detail' trip.pk %}" class="btn btn-secondary mr-2">View Details</a>
+                    <form action="{% url 'create_booking' %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <input type="hidden" name="trip_id" value="{{ trip.pk }}">
+                        <button type="submit" class="btn btn-primary mr-2">Book Trip</button>
+                    </form>
+                </div>
+            </li>
+            {% empty %}
+            <li>No trips found.</li>
+            {% endfor %}
+            <div class="pagination">
+                <span class="step-links">
+                    {% if trips.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ trips.previous_page_number }}">previous</a>
+                    {% endif %}
+                    <span class="current">
+                         Page {{ trips.number }} of {{ trips.paginator.num_pages }}.
+                         </span>
+                         {% if trips.has_next %}
+                          <a href="?page={{ trips.next_page_number }}">next</a>
+                          <a href="?page={{ trips.paginator.num_pages }}">last &raquo;</a>
+                          {% endif %}
+                        </span>
+                    </div>
+                 </ul>
+                </div>
+
+   
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

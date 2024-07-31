@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Package Detail: {{ package.packages }}</title>
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Package Detail: {{ package.real_category }}</h1>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text"><strong>Category:</strong> {{ package.category }}</p>
+                <p class="card-text"><strong>Real Category:</strong> {{ package.real_category }}</p>
+                <p class="card-text"><strong>Subcategory:</strong> {{ package.subcategory }}</p>
+                <p class="card-text"><strong>Price:</strong> {{ package.price }}</p>
+                <p class="card-text"><strong>Information:</strong> {{ package.information }}</p>
+                <a href="{% url 'package-update' package.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'package-delete' package.pk %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'package-list' %}" class="btn btn-secondary">Back to Package List</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

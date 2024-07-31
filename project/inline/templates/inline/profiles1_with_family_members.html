@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profiles with Family Members</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+        .profile-container {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+        .family-member-container {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Profiles with Family Members</h1>
+        {% for profile in profiles %}
+            <div class="profile-container">
+                <div class="field-container">
+                    <strong>First Name:</strong> {{ profile.first_name }}
+                </div>
+                <div class="field-container">
+                    <strong>Last Name:</strong> {{ profile.last_name }}
+                </div>
+                <div class="field-container">
+                    <strong>Created Date:</strong> {{ profile.created_date }}
+                </div>
+                <div class="field-container">
+                    <strong>Family Members:</strong>
+                    <ul class="list-unstyled">
+                        {% for family_member in profile.familymember_set.all %}
+                            <li class="family-member-container">
+                                <strong>Name:</strong> {{ family_member.name }}<br>
+                                <strong>Relationship:</strong> {{ family_member.relationship }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+               
+                <div class="mt-3">
+                    <a href="{% url 'profile_create' %}" class="btn btn-success mr-2">Create</a>
+                    <a href="" class="btn btn-primary mr-2">Edit</a>
+                    <a href="" class="btn btn-danger">Delete</a>
+                </div>
+                
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if form.instance.pk %}Edit Package: {{ form.instance.packages }}{% else %}Create New Package{% endif %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .form-container {
+            max-width: 600px; 
+            margin: auto;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container form-container">
+        <h1 class="mb-4">{% if form.instance.pk %}Edit Package: {{ form.instance.packages }}{% else %}Create New Package{% endif %}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <a class="btn btn-secondary mt-3" href="{% url 'package-list' %}">Cancel</a>
+    </div>
+
+    <!-- Bootstrap JS (Optional - if you need Bootstrap JS functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

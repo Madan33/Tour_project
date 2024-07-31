@@ -1,0 +1,18 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Deletion: {{ package.packages }}</title>
+</head>
+<body>
+    <h1>Confirm Deletion: {{ package.packages }}</h1>
+    <p>Are you sure you want to delete "{{ package.packages }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+    <a href="{% url 'package-detail' package.pk %}">Cancel</a>
+</body>
+</html>

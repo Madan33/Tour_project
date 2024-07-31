@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ trip.place }} Details</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">{{ trip.place }} Details</h1>
+        <div class="card mb-4">
+            <div class="card-body">
+                <p class="card-text"><strong>Location:</strong> {{ trip.location }}</p>
+                <p class="card-text"><strong>Price:</strong> {{ trip.price }}</p>
+                <p class="card-text"><strong>Start Date:</strong> {{ trip.start_date }}</p>
+                <p class="card-text"><strong>End Date:</strong> {{ trip.end_date }}</p>
+                <p class="card-text"><strong>Places to Explore:</strong> {{ trip.places_to_explore }}</p>
+            </div>
+        </div>
+        <div class="light-group-item">
+            <a href="{% url 'trip_update' trip.pk %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'trip_delete' trip.pk %}" class="btn btn-danger mr-2">Delete</a>
+        </div>
+       
+        <h2 class="mt-4">Packages Available</h2>
+        <div class="list-group">
+            {% for package in trip.packages.all %}
+                <div class="list-group-item">
+                    <h3 class="mb-1">{{ package.package }}</h3>
+                    <p class="mb-1"><strong>Category:</strong> {{ package.real_category }}</p>
+                    <p class="mb-1"><strong>Subcategory:</strong> {{ package.subcategory }}</p>
+                    <p class="mb-1"><strong>Price:</strong> {{ package.price }}</p>
+                    <p class="mb-1"><strong>Information:</strong> {{ package.information }}</p>
+                </div>
+                <div class ="light-group-item"> 
+                    <a href="{% url 'package-update' package.pk %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'package-delete' package.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+            {% empty %}
+                <div class="list-group-item">No packages available for this trip.</div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
